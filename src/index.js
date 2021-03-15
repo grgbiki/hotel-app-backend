@@ -2,6 +2,7 @@ import express from 'express';
 import http from 'http';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import cors from "cors";
 
 import dotenv from 'dotenv';
 import authenticationRoutes from './routes/authenticationRoute';
@@ -26,7 +27,7 @@ mongoose.connect('mongodb://localhost/hotel', {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(cors());
 authenticationRoutes(app);
 
 app.use(express.static('public'));
